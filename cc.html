@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        .btn-group-custom {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        tbody tr:hover {
+            background-color: #f5f5f5;
+            transition: 0.3s;
+        }
+        img {
+            border-radius: 4px;
+            max-width: 60px;
+            height: auto;
+        }
+        .btn {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 Danh sách sản phẩm</h1>
+        
+        <!-- Thanh điều khiển -->
+        <div class="controls">
+            <!-- Tìm kiếm -->
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="form-control" 
+                    placeholder="🔍 Tìm kiếm theo tên sản phẩm..."
+                    onkeyup="searchProducts()"
+                >
+            </div>
+            
+            <!-- Nút sắp xếp -->
+            <div class="btn-group-custom">
+                <button class="btn btn-primary" onclick="sortByNameAsc()">
+                    📤 Tên A → Z
+                </button>
+                <button class="btn btn-primary" onclick="sortByNameDesc()">
+                    📥 Tên Z → A
+                </button>
+                <button class="btn btn-success" onclick="sortByPriceAsc()">
+                    💲 Giá: Thấp → Cao
+                </button>
+                <button class="btn btn-success" onclick="sortByPriceDesc()">
+                    💲 Giá: Cao → Thấp
+                </button>
+                <button class="btn btn-info" onclick="resetTable()">
+                    🔄 Khôi phục
+                </button>
+            </div>
+        </div>
+
+        <!-- Bảng sản phẩm -->
+        <div class="table-responsive">
+            <table id="dataTable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Danh mục</th>
+                        <th>Giá</th>
+                        <th>Mô tả</th>
+                        <th>Hình ảnh</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Thông tin -->
+        <div class="alert alert-info mt-3" id="infoMessage">
+            Tổng cộng: <strong id="totalCount">0</strong> sản phẩm
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="baitap.js"></script>
+</body>
+</html>
